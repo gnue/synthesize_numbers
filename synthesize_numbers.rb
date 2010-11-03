@@ -117,12 +117,14 @@ class PropertyGenerator
 	def save(fname = @className+'.h')
 		base = File.basename(fname, '.*') + @suffix
 
+=begin
 		# ヘッダファイルを保存
 		if @category then
 			File.open("#{base}.h", 'w+') { |f|
 				printHeader(f)
 			}
 		end
+=end
 
 		# 実装ファイルを保存
 		File.open("#{base}.m", 'w+') { |f|
