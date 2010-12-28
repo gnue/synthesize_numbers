@@ -5,7 +5,7 @@
 = NSManagedObject の数値アクセッサを自動生成する
 
 Authors::   GNUE(鵺)
-Version::   1.0 2010-11-04 gnue
+Version::   1.0.1 2010-12-30 gnue
 Copyright:: Copyright (C) gnue, 2010. All rights reserved.
 License::   MIT ライセンスに準拠
 
@@ -13,7 +13,7 @@ License::   MIT ライセンスに準拠
 
 == 使い方
 
-$ synthesize_numbers.rb [file...]
+$ synthesize_numbers.rb file...
 
 - 入力ファイルにはヘッダファイルを指定します
 - 入力ファイルが省略されたときは標準入力より入力を行います
@@ -52,6 +52,8 @@ $ synthesize_numbers.rb [file...]
 
 == 開発履歴
 
+* 1.0.1 2010-12-30
+  * 引数がないときは Usage を出すようにした
 * 1.0 2010-11-04
   * とりあえず作ってみた
 
@@ -219,13 +221,15 @@ class PropertyGenerator
 end
 
 
-mos = PropertyGenerator.new
-
-if 0 < ARGV.length then
-	ARGV.each { |path|
-		File.open(path) { |f| mos.ganerate(f, path) }
-	}
-else
-	mos.ganerate
+if ARGV.length == 0
+	cmd = File.basename $0
+	print "Usage: #{cmd} file...\n"
+	exit
 end
 
+
+mos = PropertyGenerator.new
+
+ARGV.each { |path|
+	File.open(path) { |f| mos.ganerate(f, path) }
+}
