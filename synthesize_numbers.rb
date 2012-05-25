@@ -30,20 +30,20 @@ $ synthesize_numbers.rb file...
 
 === ヘッダファイル例
 
-@interface Hogehoge :  NSManagedObject  
-{
-}
+  @interface Hogehoge :  NSManagedObject
+  {
+  }
 
-// @synthesize_numbers (カテゴリ)
-@property (nonatomic, assign) int		prop1;		// 整数
-@property (nonatomic, assign) double	prop2;		// 浮動小数点（倍精度）
-@property (nonatomic, assign) float		prop3;		// 浮動小数点（単精度）
-@property (nonatomic, assign) NSInteger prop4;		// 整数
-@property (nonatomic, assign) long long prop5;		// 整数（64ビット）
-@property (nonatomic, assign) BOOL		prop6;		// ブール値
-// @end
+  // @synthesize_numbers (カテゴリ)
+  @property (nonatomic, assign) int       prop1;		// 整数
+  @property (nonatomic, assign) double    prop2;		// 浮動小数点（倍精度）
+  @property (nonatomic, assign) float     prop3;		// 浮動小数点（単精度）
+  @property (nonatomic, assign) NSInteger prop4;		// 整数
+  @property (nonatomic, assign) long long prop5;		// 整数（64ビット）
+  @property (nonatomic, assign) BOOL      prop6;		// ブール値
+  // @end
 
-@end
+  @end
 
 == TODO
 
