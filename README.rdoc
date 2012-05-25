@@ -1,0 +1,56 @@
+
+= NSManagedObject の数値アクセッサを自動生成する
+
+Authors::   GNUE(鵺)
+Version::   1.0.1 2010-12-30 gnue
+Copyright:: Copyright (C) gnue, 2010. All rights reserved.
+License::   MIT ライセンスに準拠
+
+　NSManagedObjectサブクラスのヘッダを読込んで数値型のアクセッサを自動生成します
+
+== 使い方
+
+$ synthesize_numbers.rb file...
+
+- 入力ファイルにはヘッダファイルを指定します
+- 入力ファイルが省略されたときは標準入力より入力を行います
+
+生成された実装ファイル(.m) はそのままプロジェクトファイルに追加して使います
+
+== ヘッダファイルへの記述
+
+コメント行で @synthesize_numbers と @end を記述して生成する property を指定します
+
+* カテゴリは省略可（括弧も省略すること）
+* @property にコメントが記述されていると生成される実装ファイルにもコメントが追加されて読みやすくなります
+* 元々の NSNumber の @property は必ず削除しておく必要があります（残ってるとメソッド名がぶつかる）
+
+=== ヘッダファイル例
+
+  @interface Hogehoge :  NSManagedObject
+  {
+  }
+
+  // @synthesize_numbers (カテゴリ)
+  @property (nonatomic, assign) int       prop1;		// 整数
+  @property (nonatomic, assign) double    prop2;		// 浮動小数点（倍精度）
+  @property (nonatomic, assign) float     prop3;		// 浮動小数点（単精度）
+  @property (nonatomic, assign) NSInteger prop4;		// 整数
+  @property (nonatomic, assign) long long prop5;		// 整数（64ビット）
+  @property (nonatomic, assign) BOOL      prop6;		// ブール値
+  // @end
+
+  @end
+
+== TODO
+
+* @property のコメントアウト対応。現在はコメントアウトしていてもアクセッサを生成してしまう
+* データモデルのファイルから読込んでインターフェースと実装の両方を自動生成
+
+== 開発履歴
+
+* 1.0.1 2010-12-30
+  * 引数がないときは Usage を出すようにした
+* 1.0 2010-11-04
+  * とりあえず作ってみた
+
